@@ -1,23 +1,22 @@
-var ejs = require('ejs');
-var fs = require('fs');
+require("jinjs").registerExtension(".tpl");
 
 function render_template(response, template, params) {
     response.writeHead(200, {"Content-Type": "text/html"});
 
-    var data = fs.readFileSync(template, 'utf8')
-    var ret = ejs.render(data, params);
-    
-    response.end(ret);
+    var template = require("./views/" + template);
+    var result = template.render(params);
+
+    response.end(result);
 }
 
 exports.home = function(request, response) {
-    render_template(response, 'views/index.ejs', {
+    render_template(response, 'index', {
         message: 'Hello world'
     });
 };
 
 exports.room = function(request, response) {
-    render_template(response, 'views/room.ejs', {
+    render_template(response, 'room', {
         message: 'This is a room'
     });
 };
