@@ -10,17 +10,14 @@ function render_template(response, template, params) {
     response.end(ret);
 }
 
-function home(request, response) {
+exports.home = function(request, response) {
     render_template(response, 'views/index.ejs', {
         message: 'Hello world'
     });
-}
+};
 
-function room(request, response) {
+exports.room = function(request, response) {
     render_template(response, 'views/room.ejs', {
         message: 'This is a room'
     });
-}
-
-exports.home = home;
-exports.room = room;
+};
