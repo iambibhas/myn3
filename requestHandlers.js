@@ -3,7 +3,7 @@ require("jinjs").registerExtension(".tpl");
 function render_template(response, template, params) {
     response.writeHead(200, {"Content-Type": "text/html"});
 
-    var template = require("./views/" + template);
+    var template = require("./templates/" + template);
     var result = template.render(params);
 
     response.end(result);
