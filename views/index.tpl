@@ -1,11 +1,9 @@
-<html>
-<head>
-    <title>Hola</title>
-</head>
+{% extends "./base.tpl" %}
 
-<body>
-    <p>
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<p>
     {{ message }}
-    </p>
-</body>
-</html>
+</p>
+{% endblock %}
