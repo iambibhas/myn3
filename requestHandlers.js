@@ -14,13 +14,12 @@ function home(request, response) {
     render_template(response, 'views/index.ejs', {
         message: 'Hello world'
     });
-    
 }
 
 function room(request, response) {
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write("Hello Room");
-    response.end();
+    render_template(response, 'views/room.ejs', {
+        message: 'This is a room'
+    });
 }
 
 exports.home = home;
