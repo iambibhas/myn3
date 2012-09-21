@@ -1,10 +1,9 @@
 var server = require("./server");
-var router = require("./router");
+var router = require('router');
 var requestHandlers = require("./requestHandlers");
+var route = router();
 
-var handle = {
-    "/": requestHandlers.home,
-    "/room": requestHandlers.room
-}
+route.get('/', requestHandlers.home)
+route.get('/room', requestHandlers.room)
 
-server.start(router.route, handle);
+server.start(route);

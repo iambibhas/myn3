@@ -10,14 +10,14 @@ function render_template(response, template, params) {
     response.end(ret);
 }
 
-function home(response) {
+function home(request, response) {
     render_template(response, 'views/index.ejs', {
         message: 'Hello world'
     });
     
 }
 
-function room(response) {
+function room(request, response) {
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("Hello Room");
     response.end();
