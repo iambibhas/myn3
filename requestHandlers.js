@@ -5,6 +5,10 @@ var route = router();
 
 function raise404(response) {
     response.writeHead(404);
+
+    var time = new Date().toUTCString();
+    console.log(time + ": Served with 404");
+    
     response.end('Page not found');
 }
 
@@ -13,7 +17,9 @@ function render_template(response, template, params) {
 
     var template = require(common.options.template_path + template);
     var result = template.render(params);
-
+    
+    var time = new Date().toUTCString();
+    console.log(time + ": Served with 200");
     response.end(result);
 }
 
