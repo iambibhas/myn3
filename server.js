@@ -1,10 +1,8 @@
 var http = require('http');
 var route = require("./requestHandlers").route;
-
-var host = '127.0.0.1';
-var port = 1338;
+var common = require('./common');
 
 (function (route){
-    http.createServer(route).listen(port, host);
-    console.log('Server running at http://' + host + ':' + port + '/');
+    http.createServer(route).listen(common.options.port, common.options.host);
+    console.log('Server running at http://' + common.options.host + ':' + common.options.port + '/');
 })(route);

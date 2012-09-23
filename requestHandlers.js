@@ -1,4 +1,5 @@
 require("jinjs").registerExtension(".tpl");
+var common = require('./common');
 var router = require('router');
 var route = router();
 
@@ -10,7 +11,7 @@ function raise404(response) {
 function render_template(response, template, params) {
     response.writeHead(200, {"Content-Type": "text/html"});
 
-    var template = require("./templates/" + template);
+    var template = require(common.options.template_path + template);
     var result = template.render(params);
 
     response.end(result);
