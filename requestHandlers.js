@@ -2,6 +2,11 @@ require("jinjs").registerExtension(".tpl");
 var router = require('router');
 var route = router();
 
+function raise404(response) {
+    response.writeHead(404);
+    response.end('Page not found');
+}
+
 function render_template(response, template, params) {
     response.writeHead(200, {"Content-Type": "text/html"});
 
@@ -23,10 +28,9 @@ route.get('/room', function(request, response) {
     });
 });
 
-route.get(function(req, res) {
+route.get(function(request, response) {
     // called if no other get route matched
-    res.writeHead(404);
-    res.end('Page not found');
+    raise404(response);
 });
 
 exports.route = route;
